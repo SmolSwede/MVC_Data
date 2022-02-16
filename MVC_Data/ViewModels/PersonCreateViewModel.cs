@@ -24,6 +24,8 @@ namespace MVC_Data.ViewModels
         [Required]
         public string City { get; set; }
 
+        public string FilterString { get; set; }
+
         public PersonCreateViewModel()
         {
         }
