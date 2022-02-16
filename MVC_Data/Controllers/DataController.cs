@@ -58,9 +58,9 @@ namespace MVC_Data.Controllers
         }
 
         [HttpPost]
-        public IActionResult Search(string inputSearchText)
+        public IActionResult Search(PersonCreateViewModel createViewModel)
         {
-            searchText = inputSearchText;
+            searchText = createViewModel.FilterString;
 
             return RedirectToAction(nameof(Index));
         }
