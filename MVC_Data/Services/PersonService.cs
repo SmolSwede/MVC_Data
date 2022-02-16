@@ -19,7 +19,7 @@ namespace MVC_Data.Services
         public Person Add(PersonCreateViewModel personVM)
         {
             if(string.IsNullOrWhiteSpace(personVM.FirstName) || string.IsNullOrWhiteSpace(personVM.LastName)
-               || int.Equals(personVM.Age, null) || string.IsNullOrWhiteSpace(personVM.Info))
+               || string.IsNullOrWhiteSpace(personVM.PhoneNumber) || string.IsNullOrWhiteSpace(personVM.City))
             {
                 return null;
             }
@@ -28,8 +28,8 @@ namespace MVC_Data.Services
             {
                 FirstName = personVM.FirstName,
                 LastName = personVM.LastName,
-                Age = personVM.Age,
-                Info = personVM.Info
+                PhoneNumber = personVM.PhoneNumber,
+                City = personVM.City
             };
 
             Person person = _inMemoryPerson.Create(newPerson);
@@ -50,7 +50,7 @@ namespace MVC_Data.Services
 
             foreach (var item in list)
             {
-                if(item.FirstName.Contains(text) || item.LastName.Contains(text) || item.Info.Contains(text))
+                if(item.FirstName.Contains(text) || item.LastName.Contains(text) || item.PhoneNumber.Contains(text) || item.City.Contains(text))
                 {
                     matches.Add(item);
                 }

@@ -57,7 +57,7 @@ namespace MVC_Data.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Search(string inputSearchText)
         {
             searchText = inputSearchText;

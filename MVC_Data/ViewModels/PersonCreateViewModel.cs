@@ -8,25 +8,32 @@ namespace MVC_Data.ViewModels
 {
     public class PersonCreateViewModel
     {
+        [Display(Name ="First Name")]
         [Required]
         public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
         [Required]
         public string LastName { get; set; }
 
-        public int Age { get; set; }
+        [Display(Name = "Phone Number")]
+        [Required]
+        public string PhoneNumber { get; set; }
 
-        public string Info { get; set; }
+        [Display(Name = "City")]
+        [Required]
+        public string City { get; set; }
 
         public PersonCreateViewModel()
         {
         }
 
-        public PersonCreateViewModel(string firstName, string lastName, int age, string info)
+        public PersonCreateViewModel(string firstName, string lastName, string phoneNumber, string city)
         {
             FirstName = firstName;
             LastName = lastName;
-            Age = age;
-            Info = info;
+            PhoneNumber = phoneNumber;
+            City = city;
         }
     }
 }

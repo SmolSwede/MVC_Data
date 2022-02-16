@@ -19,8 +19,9 @@
                 foreach (Person person in ViewBag.personServiceGetPeople)
                 {
                     <div class="col-3 card">
-                        <p>@person.FirstName @person.LastName @person.Age</p><br />
-                        <p>@person.Info</p>
+                        <p>@person.FirstName @person.LastName</p>
+                        <p>@person.PhoneNumber</p>
+                        <p>@person.City</p>
                         @Html.ActionLink("Remove", "Remove", new { id = person.Id })
                     </div>
                 }
@@ -30,8 +31,9 @@
                 foreach (Person person in ViewBag.personServiceSearch)
                 {
                     <div class="col-3 card">
-                        <p>@person.FirstName @person.LastName @person.Age</p><br />
-                        <p>@person.Info</p>
+                        <p>@person.FirstName @person.LastName</p>
+                        <p>@person.PhoneNumber</p>
+                        <p>@person.City</p>
                         @Html.ActionLink("Remove", "Remove", new { id = person.Id })
                     </div>
                 }
@@ -44,7 +46,7 @@
             <p class="h5">Search</p>
         </div>
         <div class="col-md-5">
-            <form asp-action="Search" method="get">
+            <form asp-action="Search" method="post">
                 <div class="form-group">
                     <label for="inputSearchText" class="control-label"></label>
                     <input for="inputSearchText" class="form-control" />
@@ -74,14 +76,14 @@
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Age" class="control-label"></label><br />
-                    <input asp-for="Age" class="form-control"><br>
-                    <span asp-validation-for="Age" class="text-danger"></span>
+                    <label asp-for="PhoneNumber" class="control-label"></label><br />
+                    <input asp-for="PhoneNumber" class="form-control"><br>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Info" class="control-label"></label><br />
-                    <input asp-for="Info" class="form-control"><br>
-                    <span asp-validation-for="Info" class="text-danger"></span>
+                    <label asp-for="City" class="control-label"></label><br />
+                    <input asp-for="City" class="form-control"><br>
+                    <span asp-validation-for="City" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />

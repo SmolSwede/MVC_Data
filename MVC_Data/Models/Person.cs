@@ -16,9 +16,11 @@ namespace MVC_Data.Models
 
         [Required]
         public string LastName { get; set; }
-
-        public int Age { get; set; }
-
-        public string Info { get; set; }
+        
+        [Required]
+        public string PhoneNumber { get; set; }
+        
+        [Required]
+        public string City { get; set; }
     }
 }

@@ -16,8 +16,8 @@ namespace MVC_Data.Models
             newPerson.Id = ++idCounter;
             newPerson.FirstName = person.FirstName;
             newPerson.LastName = person.LastName;
-            newPerson.Age = person.Age;
-            newPerson.Info = person.Info;
+            newPerson.PhoneNumber = person.PhoneNumber;
+            newPerson.City = person.City;
 
             listOfPeople.Add(newPerson);
             return newPerson;
