@@ -21,19 +21,20 @@ namespace MVC_Data.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.personServiceGetPeople = _personService.GetPeople();
-            ViewBag.personServiceSearch = _personService.Search(searchText);
-            ViewBag.searchText = searchText;
-            return View();
+            InMemoryPerson inMemoryPerson = new InMemoryPerson();
+            PersonCreateViewModel createViewModel = new PersonCreateViewModel();
+            if(inMemoryPerson.Read().Count() > 0)
+            {
+                createViewModel.PeopleList = inMemoryPerson.Read();
+            }
+
+            return View(createViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Index(PersonCreateViewModel createViewModel)
         {
-            ViewBag.personServiceGetPeople = _personService.GetPeople();
-            ViewBag.personServiceSearch = _personService.Search(searchText);
-            ViewBag.searchText = searchText;
 
             if (ModelState.IsValid)
             {
@@ -60,9 +61,16 @@ namespace MVC_Data.Controllers
         [HttpPost]
         public IActionResult Search(PersonCreateViewModel createViewModel)
         {
-            searchText = createViewModel.FilterString;
+            if (string.IsNullOrWhiteSpace(createViewModel.FilterString))
+            {
+                createViewModel.PeopleList = _personService.GetPeople();
+            }
+            else
+            {
+                createViewModel.PeopleList = _personService.Search(createViewModel.FilterString);
+            }
 
-            return RedirectToAction(nameof(Index));
+            return View("Index", createViewModel);
         }
     }
 }
