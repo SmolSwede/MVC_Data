@@ -1,15 +1,18 @@
-﻿@model PersonCreateViewModel
+﻿@model List<Person>
 
 <div class="row">
     @{
-        foreach (Person person in Model.PeopleList)
+        if (Model != null)
         {
-            <div class="col-3 card">
-                <p>@person.FirstName @person.LastName</p>
-                <p>@person.PhoneNumber</p>
-                <p>@person.City</p>
-                @Html.ActionLink("Remove", "Remove", new { id = person.Id })
-            </div>
+            foreach (Person person in Model)
+            {
+                <div class="col-3 card">
+                    <p>@person.FirstName @person.LastName</p>
+                    <p>@person.PhoneNumber</p>
+                    <p>@person.City</p>
+                    @Html.ActionLink("Remove", "Remove", new { id = person.Id })
+                </div>
+            }
         }
     }
 </div>

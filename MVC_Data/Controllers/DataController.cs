@@ -12,7 +12,7 @@ namespace MVC_Data.Controllers
     public class DataController : Controller
     {
         private PersonService _personService;
-        private string searchText;
+
         public DataController()
         {
             _personService = new PersonService();
@@ -21,7 +21,14 @@ namespace MVC_Data.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            InMemoryPerson inMemoryPerson = new InMemoryPerson();
+            PersonCreateViewModel createViewModel = new PersonCreateViewModel();
+            if (inMemoryPerson.Read().Count() > 0)
+            {
+                createViewModel.PeopleList = inMemoryPerson.Read();
+            }
+            
+            return View(createViewModel);
         }
 
         [HttpPost]
@@ -60,10 +67,10 @@ namespace MVC_Data.Controllers
             }
             else
             {
-                createViewModel.PeopleList = _personService.Search(searchText);
+                createViewModel.PeopleList = _personService.Search(createViewModel.FilterString);
             }
 
-            return RedirectToAction(nameof(Index));
+            return View("Index", createViewModel);
         }
     }
 }

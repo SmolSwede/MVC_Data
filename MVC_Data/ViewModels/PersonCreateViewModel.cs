@@ -27,7 +27,7 @@ namespace MVC_Data.ViewModels
 
         public string FilterString { get; set; }
 
-        public List<Person> PeopleList { get; set; }
+        public List<Person> PeopleList = new List<Person>();
 
         public PersonCreateViewModel()
         {
