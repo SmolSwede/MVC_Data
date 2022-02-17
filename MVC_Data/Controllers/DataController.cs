@@ -12,7 +12,7 @@ namespace MVC_Data.Controllers
     public class DataController : Controller
     {
         private PersonService _personService;
-        string searchText;
+        private string searchText;
         public DataController()
         {
             _personService = new PersonService();
@@ -21,9 +21,6 @@ namespace MVC_Data.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.personServiceGetPeople = _personService.GetPeople();
-            ViewBag.personServiceSearch = _personService.Search(searchText);
-            ViewBag.searchText = searchText;
             return View();
         }
 
@@ -31,9 +28,6 @@ namespace MVC_Data.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(PersonCreateViewModel createViewModel)
         {
-            ViewBag.personServiceGetPeople = _personService.GetPeople();
-            ViewBag.personServiceSearch = _personService.Search(searchText);
-            ViewBag.searchText = searchText;
 
             if (ModelState.IsValid)
             {
@@ -60,7 +54,14 @@ namespace MVC_Data.Controllers
         [HttpPost]
         public IActionResult Search(PersonCreateViewModel createViewModel)
         {
-            searchText = createViewModel.FilterString;
+            if (string.IsNullOrWhiteSpace(createViewModel.FilterString))
+            {
+                createViewModel.PeopleList = _personService.GetPeople();
+            }
+            else
+            {
+                createViewModel.PeopleList = _personService.Search(searchText);
+            }
 
             return RedirectToAction(nameof(Index));
         }

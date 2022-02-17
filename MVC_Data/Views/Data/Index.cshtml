@@ -9,37 +9,10 @@
     <div class="row">
         <div class="col-6">
             <p class="h5">List of People</p>
-            <p class="h5">@ViewBag.searchText</p>
         </div>
     </div>
-    <div class="row">
-        @{
-            if (string.IsNullOrWhiteSpace(ViewBag.searchText))
-            {
-                foreach (Person person in ViewBag.personServiceGetPeople)
-                {
-                    <div class="col-3 card">
-                        <p>@person.FirstName @person.LastName</p>
-                        <p>@person.PhoneNumber</p>
-                        <p>@person.City</p>
-                        @Html.ActionLink("Remove", "Remove", new { id = person.Id })
-                    </div>
-                }
-            }
-            else
-            {
-                foreach (Person person in ViewBag.personServiceSearch)
-                {
-                    <div class="col-3 card">
-                        <p>@person.FirstName @person.LastName</p>
-                        <p>@person.PhoneNumber</p>
-                        <p>@person.City</p>
-                        @Html.ActionLink("Remove", "Remove", new { id = person.Id })
-                    </div>
-                }
-            }
-        }
-
+    <div>
+        <partial name="PeopleList" />
     </div>
     <div class="row">
         <div class="col-md-5">

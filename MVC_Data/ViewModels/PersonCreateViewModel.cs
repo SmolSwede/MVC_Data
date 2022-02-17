@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace MVC_Data.ViewModels
 {
     public class PersonCreateViewModel
     {
-        [Display(Name ="First Name")]
+        [Display(Name = "First Name")]
         [Required]
         public string FirstName { get; set; }
 
@@ -25,6 +26,8 @@ namespace MVC_Data.ViewModels
         public string City { get; set; }
 
         public string FilterString { get; set; }
+
+        public List<Person> PeopleList { get; set; }
 
         public PersonCreateViewModel()
         {
