@@ -7,9 +7,8 @@
             foreach (Person person in Model)
             {
                 <div class="col-3 card">
+                    <p>Id: @person.Id</p>
                     <p>@person.FirstName @person.LastName</p>
-                    <p>@person.PhoneNumber</p>
-                    <p>@person.City</p>
                     @Html.ActionLink("Remove", "Remove", new { id = person.Id })
                 </div>
             }

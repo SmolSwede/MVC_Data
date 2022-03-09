@@ -72,5 +72,10 @@ namespace MVC_Data.Controllers
 
             return View("Index", createViewModel);
         }
+
+        public IActionResult DeleteID(PersonCreateViewModel createViewModel)
+        {
+            return View("Index", createViewModel);
+        }
     }
 }

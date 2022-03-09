@@ -9,6 +9,8 @@ namespace MVC_Data.ViewModels
 {
     public class PersonCreateViewModel
     {
+        public int ID { get; set; }
+
         [Display(Name = "First Name")]
         [Required]
         public string FirstName { get; set; }
@@ -28,6 +30,8 @@ namespace MVC_Data.ViewModels
         public string FilterString { get; set; }
 
         public List<Person> PeopleList = new List<Person>();
+
+        public int InputID { get; set; }
 
         public PersonCreateViewModel()
         {
