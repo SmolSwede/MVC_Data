@@ -9,7 +9,7 @@
                 <div class="col-3 card">
                     <p>Id: @person.Id</p>
                     <p>@person.FirstName @person.LastName</p>
-                    @Html.ActionLink("Remove", "Remove", new { id = person.Id })
+                    @Html.ActionLink("Remove", "Remove", "Data", new { id = person.Id })
                 </div>
             }
         }
